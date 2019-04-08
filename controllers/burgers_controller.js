@@ -14,7 +14,7 @@ router.get('/', (req, res)=>{
 
 //added a new route
 router.post('/create', (req, res) =>{
-    //console.log(req.body)
+    console.log(req.body)
     burger.create(["burger_name", "devoured"], 
     [req.body.burger_name, req.body.devoured], 
     result =>{
