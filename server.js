@@ -6,12 +6,10 @@ var app = express();
 
 var PORT = process.env.PORT || 3000
 
-
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-//app.use(express.json())
+app.use(express.json())
 
 app.use('/static', express.static('public'))
 
@@ -23,4 +21,4 @@ app.get('/', (req, res)=> {
 
 app.listen(PORT, ()=>{
     console.log(`App listening on PORT ${PORT}`)
-})
+});
