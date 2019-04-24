@@ -1,5 +1,8 @@
 // Import MySQL connection.
 var connection = require("../config/connection.js");
+//var connection = require("../config/connection");
+
+
 
 // Helper function for SQL syntax.
 // Let's say we want to pass 3 values into the mySQL query.
@@ -42,6 +45,7 @@ function objToSql(ob) {
 // Object for all our SQL statement functions.
 var orm = {
   all: function(tableInput, cb) {
+  //selectAll: function(table, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
       if (err) {
@@ -50,6 +54,8 @@ var orm = {
       cb(result);
     });
   },
+
+  //insertOne, var dbQuery
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -88,6 +94,22 @@ var orm = {
       cb(result);
     });
   }
+
+  //XXXYOUTUBE
+  deleteOne: function(table, condition, cb){
+    var queryString = "DELETE FROM " + table + " WHERE " + condition;
+    console.log(queryString);
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
+  //XXXXXXX
+
 };
 
 // Export the orm object for the model (cat.js).
