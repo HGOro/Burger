@@ -93,21 +93,34 @@ var orm = {
 
       cb(result);
     });
-  }
+  },
 
-  //XXXYOUTUBE
-  deleteOne: function(table, condition, cb){
-    var queryString = "DELETE FROM " + table + " WHERE " + condition;
-    console.log(queryString);
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
 
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   }
+
+  //XXXYOUTUBE
+  //deleteOne: function(table, condition, cb){
+  //  var queryString = "DELETE FROM " + table + " WHERE " + condition;
+  //  console.log(queryString);
+//
+  //  connection.query(queryString, function(err, result) {
+  //    if (err) {
+  //      throw err;
+  //    }
+//
+  //    cb(result);
+  //  });
+  //} 
   //XXXXXXX
 
 };
